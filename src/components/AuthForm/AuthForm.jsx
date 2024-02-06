@@ -10,10 +10,6 @@ const AuthForm = () => {
 
     const [isLogin, setIsLogin]= useState(true)
 
-  
-  
-
-
   return (
     <>
     <Box border={"1px solid gray"} borderRadius={4} padding={5}>
