@@ -15,15 +15,17 @@ const useSignUpWithEmailAndPassword = () => {
 			return;
 		}
 
+		//     Check if username already exists in database
 		const usersRef = collection(firestore, "users");
 
 		const q = query(usersRef, where("username", "==", inputs.username));
 		const querySnapshot = await getDocs(q);
-
+        //    If user with same username is found display an error message and return
 		if (!querySnapshot.empty) {
 			showToast("Error", "Username already exists", "error");
 			return;
 		}
+        //        Create a new document for this user with data provided by the form
 
 		try {
 			const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
